@@ -1,0 +1,121 @@
+.SidebarBody {
+  display: flex;
+  position: relative;
+}
+
+.sidebarToggleBtn {
+  position: fixed;
+  top: 35px;
+  left: 50px;
+  font-size: 15px;
+  cursor: pointer;
+  z-index: 200;
+  background: none;
+  border: none;
+  color: #5F6368;
+}
+
+.nav__cont {
+  position: fixed;
+  width: 225px;
+  top: 25px;
+  left: 40px;
+  height: 88vh;
+  z-index: 100;
+  background-color: #F6F8FC;
+  overflow: hidden;
+  transform: translateX(-215%);
+  transition: transform 0.5s ease-in-out;
+  box-shadow: 4px 7px 10px rgba(0, 0, 0, 0.4);
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.nav__cont.show {
+  transform: translateX(0);
+}
+
+.nav {
+  list-style-type: none;
+}
+
+.nav__items {
+  padding-bottom: 2rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+.nav__items form {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav__items input[type="text"] {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.nav__items button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.nav__items button:hover {
+  background-color: #0056b3;
+}
+
+.nav__items ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.nav__items ul li {
+  padding: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  background-color: #f8eca0d1;
+  margin-bottom: -40px; 
+  border-radius: 5px;
+  color: #0056b3;
+  /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
+}
+
+.nav__items ul li:hover {
+  transform: scale(1.05); 
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  background-color: #a0e9f8cf; 
+  color: white; 
+}
+
+.stickyNote {
+  background: yellow;
+  /* height: 18px; */
+  /* width: 100px; */
+  line-height: 25px;
+  text-align: center;
+  clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 20%, 51% 20%, 46% 0);
+  filter: drop-shadow(0 0 0.75rem grey);
+  margin: 10px 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stickyNote:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.TextareaNote{
+  line-height: 45px;
+  text-align: center;
+  clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 20%, 51% 20%, 46% 0);
+  margin: -20px 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: rgb(230,219,155);
+}
