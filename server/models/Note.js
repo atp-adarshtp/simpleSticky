@@ -18,11 +18,11 @@ const noteSchema = new mongoose.Schema({
   },
   x: {
     type: Number,
-    default: 0 // Default position if not specified
+    default: "" // Default position if not specified
   },
   y: {
     type: Number,
-    default: 0 // Default position if not specified
+    default: "" // Default position if not specified
   }
 });
 

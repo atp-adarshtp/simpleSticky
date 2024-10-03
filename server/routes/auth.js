@@ -58,7 +58,7 @@ router.post("/signup", authenticateApiKey, async (req, res) => {
 
     const payload = { userId: user.userId };
     const token = jwt.sign(payload, process.env.JWT_SECRET, {
-      expiresIn: "10d",
+      expiresIn: "1000000000000000000000000000000000000000000000000d",
     });
     res.json({ token });
   } catch (err) {
@@ -68,9 +68,9 @@ router.post("/signup", authenticateApiKey, async (req, res) => {
 
 // Signin route
 router.post("/signin", authenticateApiKey, async (req, res) => {
-  const { name, password } = req.body;
+  const { email, password } = req.body;
   try {
-    let user = await User.findOne({ name });
+    let user = await User.findOne({ email });
     if (!user) {
       return res.status(400).json({ message: "Invalid credentials" });
     }
@@ -82,7 +82,7 @@ router.post("/signin", authenticateApiKey, async (req, res) => {
 
     const payload = { userId: user.userId };
     const token = jwt.sign(payload, process.env.JWT_SECRET, {
-      expiresIn: "10d",
+      expiresIn: "1000000000000000000000000000000000000000000000000000000000000d",
     });
     // Send token and userId to the client
     res.json({ token, userId: user.userId });

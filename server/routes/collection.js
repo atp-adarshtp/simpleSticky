@@ -72,7 +72,7 @@ router.delete('/collections/:collectionId', authenticateApiKey, authenticateToke
 // Create a new note in a collection
 router.post('/collections/:collectionId/notes', authenticateApiKey, authenticateToken, async (req, res) => {
   const { collectionId } = req.params;
-  const { content } = req.body;
+  const { content, x, y } = req.body; // Capture the x and y coordinates
 
   try {
     // Check if the collection belongs to the logged-in user
@@ -81,13 +81,24 @@ router.post('/collections/:collectionId/notes', authenticateApiKey, authenticate
       return res.status(403).json({ message: 'Unauthorized' });
     }
 
-    const note = new Note({ collectionId, content });
+    // Ensure that x and y coordinates are provided
+    if (x === undefined || y === undefined) {
+      return res.status(400).json({ message: 'Missing x or y coordinates' });
+    }
+
+    // Create a new note with collectionId, content, and coordinates
+    const note = new Note({ collectionId, content, x, y });
     await note.save();
-    res.json(note);
+
+    res.json(note); // Return the saved note
+    console.log(note);
+
   } catch (err) {
     res.status(500).json({ message: 'Server error' });
+    console.log(err);
   }
 });
+
 
 // Get notes in a collection for the signed-in user
 router.get('/collections/:collectionId/notes', authenticateApiKey, authenticateToken, async (req, res) => {

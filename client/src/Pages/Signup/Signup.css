@@ -1,84 +1,90 @@
-.SinupBody{
-  background-image: url('./notes.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 100%;
-  margin: -10px 51px -10px -10px;
-  padding: 0px 0px 650px 19px;
-}
-.sinup-container {
-  padding-top: 200px;
-  box-align: center;
-  max-width: 300px;
-  margin: 0 auto;
-  border-radius: 8px;
-  text-align: center;
-  position: relative;
-}
-
-.sinup-container h2 {
-  margin-bottom: 20px;
-  color: #333;
-}
-
-.sinup-container form {
+/* Additional CSS for the Signup page */
+.signup-form {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 20px;
 }
 
-.sinup-container input[type="text"],
-.sinup-container input[type="email"],
-.sinup-container input[type="password"] {
-  width: 70%;
+.signup-input {
+  width: 100%;
   padding: 15px;
-  margin: 8px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.sinup-container button {
-  width: 80%;
-  padding: 10px;
-  margin-top: 20px;
-  background-color: #4CAF50;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  transition: all 0.3s ease;
 }
 
-.sinup-container button:hover {
-  background-color: #45a049;
+.signup-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.signup-input:focus {
+  border-color: rgba(43, 133, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.15);
+  outline: none;
+  box-shadow: 0 0 10px rgba(43, 133, 255, 0.8);
+}
+
+/* Glow Animation */
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 10px rgba(43, 133, 255, 0.3), 0 0 20px rgba(43, 133, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(43, 133, 255, 0.5), 0 0 30px rgba(43, 133, 255, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(43, 133, 255, 0.3), 0 0 20px rgba(43, 133, 255, 0.2);
+  }
+}
+
+/* Fade-in Animation */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sticky-notes-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Prevent interaction with the notes */
 }
 
 .sticky-note {
-  position: relative;
-  background-color: #f9f6c3;
-  padding: 20px;
-  margin-top: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transform: rotate(-3deg);
-  animation: floatNote 5s ease-in-out infinite alternate;
+  position: absolute;
+  width: var(--size, 80px);
+  height: var(--size, 80px);
+  background-color: #ffeb3b; /* Yellow sticky note color */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  text-align: center;
+  color: #333;
+  transform: rotate(var(--rotation, 0deg));
+  animation: fly 20s linear infinite; /* Increased duration to slow down the movement */
+  animation-delay: var(--animation-delay);
+  pointer-events: none; /* Prevent interaction with the notes */
 }
 
-@keyframes floatNote {
+@keyframes fly {
   0% {
-    transform: rotate(-3deg) translateY(0);
+    transform: translateY(100vh) rotate(var(--rotation, 0deg));
   }
   100% {
-    transform: rotate(-3deg) translateY(-10px);
-  }
-}
-
-@media (max-width: 480px) {
-  .sinup-container {
-    padding: 10px;
-  }
-  .sinup-container h2 {
-    font-size: 1.5rem;
+    transform: translateY(-100vh) rotate(calc(var(--rotation) + 720deg));
   }
 }
