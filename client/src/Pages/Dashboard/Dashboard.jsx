@@ -2,16 +2,19 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import Draggable from "react-draggable";
 import Sidebar from "../SideBar/SideBar";
-import "../Dashboard/Dashboard.css"
+import "../Dashboard/Dashboard.css";
 import config from "../../config";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+
 // Modal Component
 const Modal = ({ onClose }) => {
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-        <h2 className="modal-title">Please click the three lines at the Right bottom.</h2>
+        <h2 className="modal-title">
+          Please click the three lines at the Right bottom.
+        </h2>
         <div className="modal-actions">
           {/* <button className="modal-button" onClick={onClose}>
             Cancel
@@ -155,7 +158,9 @@ const Dashboard = () => {
         `${config.REACT_APP_LOCAL_NOTE_EDIT_URL}/${selectedCollectionId}/notes/${noteId}`,
         axiosConfig
       );
-      setNotes((prevNotes) => prevNotes.filter((note) => note.noteId !== noteId));
+      setNotes((prevNotes) =>
+        prevNotes.filter((note) => note.noteId !== noteId)
+      );
     } catch (error) {
       console.error("Error deleting note:", error.message);
     }
@@ -187,7 +192,9 @@ const Dashboard = () => {
           );
           setNotes((prevNotes) =>
             prevNotes.map((note) =>
-              note.noteId === editingNoteId ? { ...note, content: response.data.content } : note
+              note.noteId === editingNoteId
+                ? { ...note, content: response.data.content }
+                : note
             )
           );
           setIsSaving(false);
@@ -199,7 +206,7 @@ const Dashboard = () => {
 
       return () => clearTimeout(autoSave);
     }
-  }, [editingContent, editingNoteId, selectedCollectionId]);
+  }, [editingContent, editingNoteId, selectedCollectionId, axiosConfig]); // Added axiosConfig here
 
   return (
     <div className="h-screen w-screen flex">
@@ -209,11 +216,7 @@ const Dashboard = () => {
         onDoubleClick={handleDoubleClick}
         ref={dashboardRef}
       >
-        {showModal && (
-          <Modal
-            onClose={() => setShowModal(false)}
-          />
-        )}
+        {showModal && <Modal onClose={() => setShowModal(false)} />}
         {selectedCollectionId && (
           <div className="h-full w-full relative">
             {notes.length === 0 ? (
