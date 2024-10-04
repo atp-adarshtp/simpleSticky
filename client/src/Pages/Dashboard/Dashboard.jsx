@@ -6,7 +6,10 @@ import "../Dashboard/Dashboard.css"
 import config from "../../config";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+// Before
+import mousePosition from 'mouse-position';
 
+// After (if not needed)
 // Modal Component
 const Modal = ({ onClose }) => {
   return (
