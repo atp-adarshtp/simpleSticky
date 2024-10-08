@@ -31,7 +31,7 @@ const Login = () => {
   return (
     <div className="login-wrapper">
       <div className="background"></div>
-      <div className="login-container">
+      <div className="relative z-10 text-center p-10 bg-black bg-opacity-20 rounded-3xl shadow-2xl backdrop-blur-lg border border-white border-opacity-20">
         <h1 className="login-title">Unlock Your World</h1>
         <form onSubmit={handleLogin} className="login-form">
           <div className="input-group">
