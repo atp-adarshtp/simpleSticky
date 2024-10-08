@@ -104,7 +104,7 @@ const SignupPage = () => {
           />
           <button 
             type="submit" 
-            className="relative inline-block px-8 py-3 text-lg font-medium text-white bg-gradient-to-r from-blue-500 to-purple-600 border-2 border-blue-600 rounded-lg"
+            className="relative inline-block px-8 py-3 text-lg font-bold text-gray-800 bg-gradient-to-r from-blue-100 via-blue-200 to-blue-300 border-2 border-blue-400 rounded-lg transform transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50"
             disabled={isSubmitting}
           >
             {isSubmitting ? 'Signing Up...' : 'Signup'}
