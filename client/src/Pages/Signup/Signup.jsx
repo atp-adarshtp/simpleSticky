@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import config from '../../config';
@@ -10,7 +10,6 @@ const SignupPage = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [stickyNotes, setStickyNotes] = useState([]);
   const navigate = useNavigate();
 
   const remoteUrl = config.REACT_APP_REMOTE_SIGNUP_URL;
@@ -38,43 +37,8 @@ const SignupPage = () => {
     }
   };
 
-  
-  useEffect(() => {
-    const generateStickyNotes = () => {
-      const notes = Array.from({ length: 3 }).map((_, index) => ({
-        id: index,
-        size: `${Math.random() * 40 + 40}px`,
-        rotation: `${Math.random() * 360}deg`,
-        left: `${Math.random() * 100}vw`,
-        bottom: `${Math.random() * 100}vh`,
-        animationDelay: `${Math.random() * 2}s`,
-      }));
-      setStickyNotes(notes);
-    };
-
-    const timer = setTimeout(() => {
-      generateStickyNotes(); // Generate sticky notes after 20 seconds
-    }, 1); // 2000 milliseconds = 20 seconds
-
-    return () => clearTimeout(timer); // Cleanup on component unmount
-  }, []);
   return (
     <div className="relative flex items-center justify-center min-h-screen bg-black overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
-        <div className="sticky-notes-container">
-          {stickyNotes.map(note => (
-            <div key={note.id} className={`sticky-note animate-fly`} style={{
-              '--animation-delay': note.animationDelay,
-              '--size': note.size,
-              '--rotation': note.rotation,
-              left: note.left,
-              bottom: note.bottom,
-            }}>
-              <p>Note {note.id + 1}</p>
-            </div>
-          ))}
-        </div>
-      </div>
       <div className="relative z-10 text-center p-10 bg-black bg-opacity-20 rounded-3xl shadow-2xl backdrop-blur-lg border border-white border-opacity-20">
         <h2 className="text-4xl font-extrabold text-white mb-6">Create Account</h2>
         <form onSubmit={handleSignup} className="signup-form">
@@ -117,7 +81,6 @@ const SignupPage = () => {
       </div>
     </div>
   );
-  
 };
 
 export default SignupPage;
