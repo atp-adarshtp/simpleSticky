@@ -218,7 +218,7 @@ const Sidebar = ({ onCollectionClick }) => {
                       </form>
                     ) : (
                       <>
-                        <hr
+                        {/* <hr
                           style={{
                             borderColor: "#00000038",
                             borderWidth: "1px",
@@ -231,10 +231,10 @@ const Sidebar = ({ onCollectionClick }) => {
                             color: "rgb(255 0 0 / 51%)",
                             cursor: "pointer",
                             marginRight: 10,
-                          }} // Change cursor to pointer
+                          }} 
                           onClick={() =>
                             showDeleteConfirmation(collection.collectionId)
-                          } // Show modal
+                          } 
                         />
                         <i
                           className="fa fa-fa-solid fa-user-pen"
@@ -244,7 +244,7 @@ const Sidebar = ({ onCollectionClick }) => {
                             setTitle(collection.title);
                           }}
                         />
-                        {/* <i
+                        <i
                           className="fa-solid fa-share"
                           style={{ color: "blue", cursor: "pointer" }} 
                           onClick={() =>
