@@ -1,0 +1,90 @@
+/* Additional CSS for the Signup page */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.signup-input {
+  width: 100%;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.signup-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.signup-input:focus {
+  border-color: rgba(43, 133, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.15);
+  outline: none;
+  box-shadow: 0 0 10px rgba(43, 133, 255, 0.8);
+}
+
+/* Glow Animation */
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 10px rgba(43, 133, 255, 0.3), 0 0 20px rgba(43, 133, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(43, 133, 255, 0.5), 0 0 30px rgba(43, 133, 255, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(43, 133, 255, 0.3), 0 0 20px rgba(43, 133, 255, 0.2);
+  }
+}
+
+/* Fade-in Animation */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sticky-notes-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Prevent interaction with the notes */
+}
+
+.sticky-note {
+  position: absolute;
+  width: var(--size, 80px);
+  height: var(--size, 80px);
+  background-color: #ffeb3b; /* Yellow sticky note color */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  text-align: center;
+  color: #333;
+  transform: rotate(var(--rotation, 0deg));
+  animation: fly 20s linear infinite; /* Increased duration to slow down the movement */
+  animation-delay: var(--animation-delay);
+  pointer-events: none; /* Prevent interaction with the notes */
+}
+
+@keyframes fly {
+  0% {
+    transform: translateY(100vh) rotate(var(--rotation, 0deg));
+  }
+  100% {
+    transform: translateY(-100vh) rotate(calc(var(--rotation) + 720deg));
+  }
+}

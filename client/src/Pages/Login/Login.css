@@ -1,0 +1,131 @@
+/* Background Styling */
+.login-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #0a0a0a;
+  overflow: hidden;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(43, 133, 255, 0.15) 0%, rgba(0, 0, 0, 1) 80%);
+  z-index: 0;
+  overflow: hidden;
+}
+
+
+/* Login Title */
+.login-title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  animation: fade-in 1s ease-in-out;
+}
+
+/* Form Styles */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.login-input {
+  width: 100%;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  text-shadow: none;
+}
+
+.login-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.login-input:focus {
+  border-color: rgba(43, 133, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.15);
+  outline: none;
+  box-shadow: 0 0 10px rgba(43, 133, 255, 0.8);
+}
+
+/* Submit Button */
+.login-button {
+  padding: 15px;
+  background-color: #2b85ff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.login-button:hover {
+  background-color: #459fff;
+  transform: scale(1.05);
+}
+
+.login-button:disabled {
+  background-color: #808080;
+  cursor: not-allowed;
+}
+
+/* Error Message */
+.login-error {
+  color: #ff4d4d;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+/* Signup Link */
+.signup-link {
+  margin-top: 15px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.signup-link a {
+  color: #2b85ff;
+  text-decoration: underline;
+}
+
+/* Fade-in Animation */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .login-container {
+    padding: 30px;
+  }
+
+  .login-title {
+    font-size: 2rem;
+  }
+
+  .login-button {
+    font-size: 1rem;
+    padding: 12px;
+  }
+}
