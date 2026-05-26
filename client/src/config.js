@@ -1,12 +1,12 @@
-// src/config.js
-  const config = {
-    REACT_APP_LOCAL_SIGNUP_URL: 'http://10.9.9.24:5000/api/auth/signup',
-    REACT_APP_LOCAL_COLLECTIONS_URL: 'http://10.9.9.24:5000/api/collections',
-    REACT_APP_LOCAL_LOGIN_URL: 'http://10.9.9.24:5000/api/auth/signin',
-    REACT_APP_LOCAL_NOTE_EDIT_URL:'http://10.9.9.24:5000/api/collections',
-    REACT_APP_LOCAL_COLLECTIONS_SHARED_URL: "http://10.9.9.24:5000/api/collections/shared",
-    REACT_APP_LOCAL_COLLECTION_SHARE_URL: "http://10.9.9.24:5000/api/collections",
-  };
-  
-  export default config;
-  
+// src/config.js — use relative paths in production so Nginx proxies /api over HTTPS
+const config = {
+  REACT_APP_LOCAL_SIGNUP_URL: '/api/auth/signup',
+  REACT_APP_LOCAL_COLLECTIONS_URL: '/api/collections',
+  REACT_APP_LOCAL_LOGIN_URL: '/api/auth/signin',
+  REACT_APP_LOCAL_NOTE_EDIT_URL: '/api/collections',
+  REACT_APP_LOCAL_COLLECTIONS_SHARED_URL: '/api/collections/shared',
+  REACT_APP_LOCAL_COLLECTION_SHARE_URL: '/api/collections',
+};
+
+export default config;
+
